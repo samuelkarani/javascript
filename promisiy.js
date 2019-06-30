@@ -19,14 +19,14 @@ function promisify(reader)
 	}
 }
 
-const readFilesAsync = promisify(fs.readFile);
+const readFilesAsync = promisify(fs.readFile)
 
 readFilesAsync("file.txt", "file2.txt")
 	.then((texts) =>
 	{
-		console.log('CONTENTS:', texts);
+		console.log('CONTENTS:', texts)
 	})
 	.catch((err) =>
 	{
-		console.log('ERROR:', err);
-	});
+		console.log('ERROR:', err)
+	})

@@ -11,7 +11,7 @@ function helper(A, res)
 
 function flatten(A)
 {
-  const res = [];
+  const res = []
   helper(A, res)
   return res
 }
