@@ -19,7 +19,10 @@ function factorialFast(n)
 	return helper(n, 1)
 }
 
-console.time('factorial')
+console.time('factorialSlow')
 console.log(factorialSlow(5))
+console.timeEnd('factorialSlow')
+console.time('factorialFast')
 console.log(factorialFast(5))
+console.timeEnd('factorialFast')
 console.log(factorialFast(-4))

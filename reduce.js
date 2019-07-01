@@ -1,0 +1,4 @@
+function reduce(A, start)
+{
+
+}

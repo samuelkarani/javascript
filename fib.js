@@ -24,16 +24,42 @@ function helper(n, cache)
 
 function fibFast(n)
 {
-	const cache = {}
-	const res = helper(n, cache)
-	// console.log(cache)
-	return res
+	return helper(n, {})
+}
+
+function* generator()
+{
+	yield 0;
+	let [prev, cur] = [0, 1]
+	while (true)
+	{
+		[prev, cur] = [cur, prev + cur]
+		yield cur
+	}
+}
+
+function fibGenerator(n)
+{
+	if (n < 0)
+		return 0
+	let i;
+	for (i of generator())
+	{
+		n--;
+		if (n == 0)
+			break
+	}
+	return i;
 }
 
 console.time('fibSlow')
-console.log(fibSlow(42))
+console.log(fibSlow(11))
 console.timeEnd('fibSlow')
 
 console.time('fibFast')
-console.log(fibFast(42))
+console.log(fibFast(11))
 console.timeEnd('fibFast')
+
+console.time('fibGenerator')
+console.log(fibGenerator(11))
+console.timeEnd('fibGenerator')
