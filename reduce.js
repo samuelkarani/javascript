@@ -1,4 +1,0 @@
-function reduce(A, start)
-{
-
-}
