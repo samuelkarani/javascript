@@ -7,7 +7,7 @@ function fibSlow(n)
 	return fibSlow(n - 1) + fibSlow(n - 2)
 }
 
-function helper(n, cache)
+function fibFast(n, cache = {})
 {
 	if (n < 0)
 		return 0
@@ -17,14 +17,9 @@ function helper(n, cache)
 		return cache[n]
 	else
 	{
-		cache[n] = helper(n - 1, cache) + helper(n - 2, cache)
+		cache[n] = fibFast(n - 1, cache) + fibFast(n - 2, cache)
 		return cache[n]
 	}
-}
-
-function fibFast(n)
-{
-	return helper(n, {})
 }
 
 function* generator()
