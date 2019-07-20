@@ -7,7 +7,7 @@ function fibSlow(n)
 	return fibSlow(n - 1) + fibSlow(n - 2)
 }
 
-function fibFast(n, cache = {})
+function fibMemo(n, cache = {})
 {
 	if (n < 0)
 		return 0
@@ -17,12 +17,22 @@ function fibFast(n, cache = {})
 		return cache[n]
 	else
 	{
-		cache[n] = fibFast(n - 1, cache) + fibFast(n - 2, cache)
+		cache[n] = fibMemo(n - 1, cache) + fibMemo(n - 2, cache)
 		return cache[n]
 	}
 }
 
-function* generator()
+function fibDynamicProgramming(n)
+{
+	if (n <= 0)
+		return 0
+	let [prev, cur] = [0, 1]
+	while (--n > 0)
+		[prev, cur] = [cur, prev + cur]
+	return cur
+}
+
+function* generatorDP()
 {
 	yield 0;
 	let [prev, cur] = [0, 1]
@@ -38,7 +48,7 @@ function fibGenerator(n)
 	if (n < 0)
 		return 0
 	let i;
-	for (i of generator())
+	for (i of generatorDP())
 	{
 		n--;
 		if (n == 0)
@@ -51,9 +61,13 @@ console.time('fibSlow')
 console.log(fibSlow(11))
 console.timeEnd('fibSlow')
 
-console.time('fibFast')
-console.log(fibFast(11))
-console.timeEnd('fibFast')
+console.time('fibMemo')
+console.log(fibMemo(11))
+console.timeEnd('fibMemo')
+
+console.time('fibDynamicProgramming')
+console.log(fibDynamicProgramming(11))
+console.timeEnd('fibDynamicProgramming')
 
 console.time('fibGenerator')
 console.log(fibGenerator(11))
