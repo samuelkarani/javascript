@@ -51,13 +51,26 @@ function quickSortHoare(A, s = 0, e = A.length - 1)
     }
 }
 
-const randomArray = n => Array.from({ length: n }, () => Math.floor(Math.random() * n))
-let A = randomArray(5)
-console.log(A)
-quickSortLomuto(A)
-console.log(A)
+function printArray(A)
+{
+    let s = ""
+    for (let i = 0; i < A.length; i++) {
+        s += A[i] + ' '
+    }
+    console.log(s)
+}
 
-A = randomArray(5)
-console.log(A)
+const randomArray = n => Array.from({ length: n }, () => Math.floor(Math.random() * n))
+let A = randomArray(50)
+printArray(A)
+console.time("quickSortLomuto")
+quickSortLomuto(A)
+console.timeEnd("quickSortLomuto")
+printArray(A)
+
+A = randomArray(50)
+printArray(A)
+console.time("quickSortHoare")
 quickSortHoare(A)
-console.log(A)
+console.timeEnd("quickSortHoare")
+printArray(A)
