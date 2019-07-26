@@ -13,13 +13,9 @@ function fibMemo(n, cache = {})
 		return 0
 	if (n <= 1)
 		return n
-	if (cache[n])
-		return cache[n]
-	else
-	{
+	if (!cache[n])
 		cache[n] = fibMemo(n - 1, cache) + fibMemo(n - 2, cache)
-		return cache[n]
-	}
+	return cache[n]
 }
 
 function fibDynamicProgramming(n)

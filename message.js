@@ -1,3 +1,4 @@
+'use strict'
 function contains(dict, prop)
 {
 	return dict.hasOwnProperty(prop)
@@ -5,11 +6,11 @@ function contains(dict, prop)
 
 function resolveMessage(message, dict, res)
 {
-	let i, j, cur, rst
-	i = 0, j = 2
+	let j, cur, rst
+	j = 2
 	while (j <= message.length)
 	{
-		cur = message.substring(i, j)
+		cur = message.substring(0, j)
 		if (contains(dict, cur))
 		{
 			res.push(cur)

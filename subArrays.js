@@ -10,4 +10,5 @@ function subArrays(arrays, n, idx = 0, res = [])
 let a = [1, 2, 3, 4]
 let b = [5, 6, 7]
 let c = [8, 9]
-subArrays([a, b, c], 3)
+let d = [11]
+subArrays([a, b, c, d], 4)
