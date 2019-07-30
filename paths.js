@@ -5,10 +5,7 @@ function helper(start, end)
 	let [a, b] = start
 	let [x, y] = end
 	let count = -1
-
-	if (x < a || y < b)
-		return -1
-	if (x == a || y == b)
+	if (x == a && y == b)
 		return 0;
 	if (x > a)
 		count += 1 + helper([a + 1, b], end)
@@ -19,6 +16,12 @@ function helper(start, end)
 
 function getPaths(start, end)
 {
+	let [a, b] = start
+	let [x, y] = end
+	if (x < a || y < b)
+		return -1
+	if (x == a && y == b)
+		return 0;
 	return 1 + helper(start, end)
 }
 
